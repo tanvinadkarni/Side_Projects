@@ -1,0 +1,149 @@
+<!doctype html>
+<html>
+<head>
+    <link href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet"/>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:500,300,700,400' rel='stylesheet' type='text/css'>
+    <link href="css/main.css" rel="stylesheet"/>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.cloudinary/1.0.18/jquery.cloudinary.min.js" type="text/javascript"></script>
+</head>
+<body ng-app="myApp">
+<div class="main" ng-controller="ScreenController">
+    <header></header>
+    <div class="button-position">
+        <p>
+            <button ng-click = "previwExpScreeshot()" class="btn btn-primary" type="button">Preview & Export</button>
+            <button ng-click = "addScreenshot()"   class="btn btn-primary" type="button">Add Screenshot + </button>
+        </p>
+    </div>
+    <div class="container-fluid clearContent">
+        <div style="width:100%" class="container text-center">
+            <div class="row">
+                <div class="col-sm-4" ng-repeat="(k,v) in screenshots">
+                    <form class="position-above">
+                        <div class="preview">
+                            <img width="300" ng-src="{{v.img}}">
+                        </div>
+                        <div class="device-options">
+                            <div class="layout-style">
+                                <label class="device-opt-text">Text Layout & Style{{k}}</label>
+                                <select ng-model="screenshots[k].selOption" class="form-control select-size" >
+                                    <option selected value="above"> Cropped Device with Text Above </option>
+                                    <option value="below"> Cropped Device with Text Below </option>
+                                    <option value="ssnone"> Screenshot Only</option>
+                                </select>
+                                <label class="device-opt-text">Screen Layout</label>
+                                <select ng-model="screenshots[k].scrOption" class="form-control select-size">
+                                    <option value="wear">Android Wear</option>
+                                    <option value="nexus5">Nexus 5X</option>
+                                    <option selected value="nexus6">Nexus 6P</option>
+                                    <option value="Awatch"> Apple Watch</option>
+                                    <option value="iphone6">iPhone 6s</option>
+                                    <option value="iphone6P">iPhone 6s Plus</option>
+                                    <option value="ipadAir">iPad Air 2</option>
+                                </select>
+                                <label class="caption">Captions:</label>
+                                <textarea ng-model="screenshots[k].textModel" class="form-control textarea-size" rows="5"
+                                          id="comment"></textarea>
+
+                                <label class="device-opt-text">Select Font Family</label>
+                                <select ng-model="screenshots[k].textOption" class="form-control select-size">
+                                    <option selected value="times"> Times New Roman</option>
+                                    <option value="Verdana">Verdana</option>
+                                    <option value="Arial"> Arial</option>
+                                </select>
+                                <div class="row setcol">
+                                    <div class="col-lg-6">
+                                        <label class="caption">Font Size:</label>
+                                        <input ng-model="screenshots[k].fntSizeOpt"  type="text"
+                                                class="form-control " placeholder="Enter Font Size"
+                                               aria-label="...">
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label class="caption">Font Style:</label>
+                                        <select ng-model="screenshots[k].fntStyleOpt" class="form-control ">
+                                            <option selected value="normal"> normal </option>
+                                            <option value="italic">italic</option>
+                                            <option value="oblique"> oblique</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row setcol">
+                                    <div class="col-lg-6">
+                                        <label class="caption">Font Weight:</label>
+                                        <select  ng-model="screenshots[k].fntWeightOpt" class="form-control ">
+                                            <option selected value="normal"> bold </option>
+                                            <option value="italic">bolder</option>
+                                            <option value="oblique"> lighter</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="setcol">
+                                    <a href="#null" ng-model="screenshots[k].collapsed" ng-click="collapsed = !collapsed"> Colors &
+                                        Background </a>
+                                    <div ng-show="collapsed">
+                                        <div class="row setcol">
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon colorchg" ng-style="screenshots[k].myColorStyle">
+                                                    </div>
+                                                    <input ng-model="screenshots[k].myColor" ng-keyup="changeColorOf(k)" type="text"
+                                                           id="pickercolor" class="form-control "
+                                                           aria-label="...">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="input-group">
+                                                    <div class="input-group-addon colorchg" ng-style="screenshots[k].backColorStyle"></div>
+                                                    <input ng-model="screenshots[k].backColor" ng-keyup="changeBackgroundCol(k)"
+                                                           type="text" class="form-control"
+                                                           aria-label="...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="buttonContent">
+
+                                <div class="screenshots">
+                                    <label class="device-opt-text">Screenshot</label>
+                                    <div class="fileupload">
+                                        <input ng-click="upload(k)" class="btn btn-default" type="button" value="Browse Screenshot">
+                                    </div>
+                                </div>
+                                <div style="margin-top:10px">
+                                    <p>
+                                        <button ng-click="createScrObj(k)" class="btn btn-primary" type="button">Generate Screenshot</button>
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Modules -->
+<script src="app.js"></script>
+<!----Directive--->
+<script src="js/directives/header.js"></script>
+
+<!-- Controllers -->
+<script src="js/controllers/ScreenController.js"></script>
+<!-- Services -->
+
+
+</body>
+</html>

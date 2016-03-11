@@ -1,0 +1,51 @@
+<div style="width:100%" class="container text-center">
+    <h3>Anroid Screen shot</h3><br>
+    <div class="row">
+        <div class="col-sm-4">
+            <form class="position-above">
+                <div class="preview">
+                   <div>{{}}</div>
+                    <img src="images/dummy_anroid.png">
+                </div>
+                <div class="device-options">
+                    <div class="layout-style">
+                        <label class="device-opt-text">Layout & Style</label>
+                        <select class="form-control select-size">
+                            <option value="above"> Cropped Device with Text Above</option>
+                            <option value="below"> Cropped Device with Text Below</option>
+                            <option value="none"> Screenshot Only</option>
+                        </select>
+                        <label class="caption">Captions:</label>
+                        <textarea class="form-control textarea-size" rows="5" id="comment"></textarea>
+                        <div class="setcol">
+                            <a href="#null" ng-model="collapsed" ng-click="collapsed = !collapsed"> Colors & Background </a>
+                            <div ng-show="collapsed">
+                                <div class="row setcol">
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <div class="input-group-addon colorchg" ng-style="{background-color: myColor}">dfsfs </div>
+                                            <input  ng-model="myColor"  type="text" id="pickercolor" class="form-control " placeholder="#fff" aria-label="...">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"> </span>
+                                            <input type="text" class="form-control" placeholder="#000" aria-label="...">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="screenshots">
+                        <label class="device-opt-text">Screenshot</label>
+
+                        <div class="fileupload">
+                            <input type="file" class="form-control uploadimg">
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
