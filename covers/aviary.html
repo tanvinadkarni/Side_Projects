@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script type="text/javascript" src="https://dme0ih8comzn4.cloudfront.net/js/feather.js"></script>
+    <!-- Instantiate the widget -->
+    <script type="text/javascript">
+
+        var featherEditor = new Aviary.Feather({
+            apiKey: '9dfeed7bca87456484bddaf276220dfb',
+            theme: 'dark', // Check out our new 'light' and 'dark' themes!
+            tools: 'all',
+            onSave: function(imageID, newURL) {
+                var img = document.getElementById(imageID);
+                img.src = newURL;
+                window.open("http://bookstruck.in/api.jsp?action=image-upload-via-aviary&img="+newURL);
+            },
+            onLoad:function(){
+                setTimeout(function(){
+                    document.getElementsByTagName("h1")[0].remove();
+                    launchEditor('imgModified',getParameterByName('url') );
+                }, 2000);
+            }
+        });
+
+        function launchEditor(id, src) {
+            featherEditor.launch({
+                image: id,
+                url: src,
+                cropPresets: ['Custom',['Book Cover','2:3'],['Android','1014:500'],['FB Promo','1200:450'],['Twitter Preview', '2:1'],
+                    ['FB Cover Photo', '851:315'] ]
+            });
+            return false;
+        }
+
+    </script>
+
+</head>
+<body>
+
+<h1>Loading.....</h1>
+
+<div id='injection_site'></div>
+<img id="imgModified" src="" style="display:none;"/>
+
+<script type="text/javascript">
+
+     function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+     document.getElementById("imgModified").src=getParameterByName('url');
+
+
+
+
+
+
+</script>
+</body>
+</html>

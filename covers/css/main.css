@@ -1,0 +1,145 @@
+html, body {
+    background: #fff;
+    font-family:"Oxygen";
+    font-weight:300;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+ #header {
+     background-color:#ffa500 ;
+     color:white;
+     text-align:center;
+     padding:5px;
+ }
+
+.main {
+
+    background-size:141px 142px;
+
+}
+
+.main .series {
+    color:#0393ff;
+}
+
+.main .episode {
+    color: #fff;
+    font-family: "Montserrat", sans-serif;
+    margin: 0 0 40px 0;
+    text-transform: uppercase;
+}
+
+.main .description {
+    color: #fff;
+}
+
+.main , .main img {
+    margin:  0 0;
+}
+
+
+
+
+
+.price {
+    background-color: #39D1B4 ;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    font-weight: 200;
+
+    line-height: 69px;
+text-align: center;
+    width: 69px;
+
+
+}
+#leftNav {
+    line-height:30px;
+    background-color:#eeeeee;
+    height:300px;
+    width:15%;
+    float:left;
+    padding:5px;
+}
+#section {
+    width:81%;
+    float:left;
+    padding:10px;
+}
+#footer {
+    background-color:black;
+    color:white;
+    clear:both;
+    text-align:center;
+    padding:5px;
+}
+a {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+.navleft {
+    list-style-type: none;
+    margin-left: -9px;
+}
+.gridImg{
+float: left;
+    padding:2px;
+
+
+}
+.search{
+    width:100%;
+}
+.largeImg{
+    width: 50%; margin: 0 auto; text-align: left
+
+}
+.crop {
+    background-color: #555555;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 0 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #FFA500;
+    color: white;
+    width:100%
+}
+
+li a:hover:not(.active) {
+    background-color: #FFA500;
+    color: white;
+}
